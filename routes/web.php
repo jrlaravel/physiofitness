@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\BlogController;
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/pf-admin', [LoginController::class, 'index'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');;
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
