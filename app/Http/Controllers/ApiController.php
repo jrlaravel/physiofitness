@@ -6,7 +6,9 @@ use App\Models\Banner_detail;
 use App\Models\Blog_detail;
 use App\Models\Member_detail;
 use App\Models\Service_detail;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
@@ -36,4 +38,48 @@ class ApiController extends Controller
         $member = Member_detail::all();
         return response()->json($member);
     }
+
+
+
+public function store(Request $request)
+{
+    // Validate incoming request data
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'email' => 'required|email',
+        'phone' => 'required|string|max:15',
+        'age' => 'required|integer|min:0',
+        'message' => 'nullable|string|max:1000',
+    ]);
+
+    // If validation fails, return a JSON response with errors
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Validation failed',
+            'errors' => $validator->errors()
+        ], 422);
+    }
+
+    // Attempt to create the appointment record
+    try {
+        $appointment = Appointment::create($request->only(['name', 'email', 'phone', 'age', 'message']));
+        
+        // Return a success JSON response
+        return response()->json([
+            'success' => true,
+            'message' => 'Appointment created successfully!',
+            'data' => $appointment
+        ], 201);
+
+    } catch (\Exception $e) {
+        // Return an error JSON response if creation fails
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to create appointment',
+            'error' => $e->getMessage()
+        ], 500);
+    }
+}
+
 }
