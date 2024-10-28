@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Blog_detail;
 use App\Models\Member_detail;
 use App\Models\Service_detail;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use App\Models\Appointment;
 use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
@@ -287,8 +289,94 @@ class BlogController extends Controller
 
     public function appointment()
     {
-        return view('appointment');
+        $data = Appointment::all();
+        return view('appointment',compact('data'));
     }
 
+    public function testimonial()
+    {
+        $testimonials = Testimonial::all();
+        return view('testimonial',compact('testimonials'));
+    }
+
+    public function store_testimonial(Request $request)
+    {
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'testimonial_name' => 'required|max:255',
+            'testimonial_problem' => 'required|max:255',
+            'testimonial_description' => 'required',
+            'testimonial_video' => 'sometimes|file|mimes:mp4,mov,ogg,qt|max:20000', // Adjust max size if needed
+        ]);
     
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+    
+        // Check if this is an update
+        if ($request->testimonial_id) {
+            // Update existing testimonial
+            $testimonial = Testimonial::find($request->testimonial_id);
+    
+            if ($testimonial) {
+                // Update only fields that are provided
+                $testimonial->name = $request->testimonial_name;
+                $testimonial->problem = $request->testimonial_problem;
+                $testimonial->review = $request->testimonial_description;
+    
+                // Handle video upload if provided
+                if ($request->hasFile('testimonial_video')) {
+                    // Delete the old video file if it exists
+                    if (file_exists(public_path('storage/testimonial/'.$testimonial->video))) {
+                        unlink(public_path('storage/testimonial/'.$testimonial->video));
+                    }
+    
+                    // Upload the new video file
+                    $video = $request->file('testimonial_video');
+                    $videoName = time() . '.' . $video->getClientOriginalExtension();
+                    $video->move(public_path('storage/testimonial'), $videoName);
+                    $testimonial->video = $videoName;
+                }
+    
+                // Save the updated testimonial
+                $testimonial->save();
+                return back()->with('success', 'Testimonial updated successfully.');
+            }
+        } else {
+            // Create new testimonial
+            $videoName = null;
+            if ($request->hasFile('testimonial_video')) {
+                $video = $request->file('testimonial_video');
+                $videoName = time() . '.' . $video->getClientOriginalExtension();
+                $video->move(public_path('storage/testimonial'), $videoName);
+            }
+    
+            Testimonial::create([
+                'name' => $request->testimonial_name,
+                'problem' => $request->testimonial_problem,
+                'review' => $request->testimonial_description,
+                'video' => $videoName,
+            ]);
+    
+            return back()->with('success', 'Testimonial added successfully.');
+        }
+    }
+    
+
+    public function delete_testimonial($id)
+    {
+        $testimonial = Testimonial::find($id);
+        if ($testimonial) {
+            // Delete video from local folder
+            if (file_exists(public_path('storage/testimonial/'.$testimonial->video))) {
+                unlink(public_path('storage/testimonial/'.$testimonial->video));
+            }
+
+            // Delete testimonial
+            $testimonial->delete();
+            return back()->with('success', 'Testimonial deleted successfully.');
+        } else {
+            return back()->with('error', 'Testimonial not found.');
+        }
+    }
 }

@@ -25,5 +25,7 @@ Route::get('/team-member', [BlogController::class, 'team_member'])->name('team-m
 Route::post('/store-team-member', [BlogController::class, 'store_team_member'])->name('store-team-member');
 Route::get('/delete-team-member/{id}', [BlogController::class, 'delete_team_member'])->name('delete-team-member');
 Route::get('/appointment', [BlogController::class, 'appointment'])->name('appointment');
-route::get('testimonial', [BlogController::class, 'testimonial'])->name('testimonial')->name('testimonial');
+route::get('/testimonial', [BlogController::class, 'testimonial'])->name('testimonial');
+route::post('/store-testimonial', [BlogController::class, 'store_testimonial'])->name('store-testimonial');
+route::get('/delete-testimonial/{id}', [BlogController::class, 'delete_testimonial'])->name('delete-testimonial');
 
