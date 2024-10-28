@@ -12,7 +12,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Sign in - PhysioFitness</title>
+    <title>Forget Password - PhysioFitness</title>
     <!-- CSS files -->
     <link href="{{asset('css/tabler.min.css?1692870487')}}" rel="stylesheet"/>
     <link href="{{asset('css/tabler-flags.min.css?1692870487')}}" rel="stylesheet"/>
@@ -40,32 +40,32 @@
         </div>
         <div class="card card-md">
           <div class="card-body">
-            <h2 class="h2 text-center mb-4">Login to your account</h2>
+            <h2 class="h2 text-center mb-4">Recover Your password</h2>
             @if(Session::has('message'))
             <div class="alert alert-danger">{{Session::get('message')}}</div>
             @endif
-            @if(Session::has('success'))
-            <div class="alert alert-success">{{Session::get('success')}}</div>
-            @endif
-            <form action="{{ route('authenticate') }}" method="POST">
+            <form action="{{ route('reset-password') }}" method="POST">
                 @csrf
               <div class="mb-3">
                 <label class="form-label">Email address</label>
                 <input type="email" class="form-control" name="email" required placeholder="your@email.com">
               </div>
               <div class="mb-2">
-                <label class="form-label">
-                  Password
-                  <span class="form-label-description">
-                    <a href="{{route('forget-password')}}">I forgot password</a>
-                  </span>
-                </label>
+                <label class="form-label">New Password</label>
                 <div class="input-group input-group-flat">
-                  <input type="password" class="form-control" name="password" required placeholder="Your password">
+                  <input type="password" class="form-control" name="password" required placeholder="Enter password">
+                  
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Confirm Password</label>
+                <div class="input-group input-group-flat">
+                  <input type="password" class="form-control" name="password_confirmation" required placeholder="Enter Confirm password">
+                 
                 </div>
               </div>
               <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                <button type="submit" class="btn btn-primary w-100">Reset</button>
               </div>
             </form>
           </div>

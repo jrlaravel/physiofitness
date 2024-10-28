@@ -8,6 +8,8 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/pf-admin', [LoginController::class, 'index'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('forget-password', [LoginController::class, 'forget_password'])->name('forget-password');
+Route::post('/reset-password', [LoginController::class,'reset_password'])->name('reset-password');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');;
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/navbar-detail', [NavbarController::class, 'index'])->name('navbar-detail');
