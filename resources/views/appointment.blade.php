@@ -16,9 +16,9 @@ Appoitment List
               <th>Full name</th>
               <th>Email</th>
               <th>Phone Number</th>
-              <th>Phone No.</th>
               <th>Age</th>
               <th>Quetions</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
