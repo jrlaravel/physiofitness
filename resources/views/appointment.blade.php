@@ -50,7 +50,7 @@ Appointment List
 
 <script>
   function confirmStatusChange(appointmentId, checkbox) {
-    if (confirm('Are you sure you want to mark this appointment as completed?')) {
+    if (confirm('Are you sure you want to change the status of your appointment')) {
       updateStatus(appointmentId, checkbox);
     } else {
       checkbox.checked = false; // Revert checkbox if canceled
