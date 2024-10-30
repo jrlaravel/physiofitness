@@ -82,4 +82,14 @@ public function store(Request $request)
     }
 }
 
+public function updateStatus($id, Request $request)
+{
+    $appointment = Appointment::findOrFail($id);
+    $appointment->status = $request->status;
+    if ($appointment->save()) {
+        return response()->json(['success' => true]);
+    } else {
+        return response()->json(['success' => false], 500);
+    }
+}
 }
