@@ -39,7 +39,7 @@
             <ul class="navbar-nav pt-lg-3">
               <li class="nav-item">
                 <a class="nav-link" href="{{route('dashboard')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <rect x="4" y="4" width="6" height="6" rx="1" />
@@ -55,7 +55,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('navbar-detail')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->          
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">          
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
                   </span>
                   <span class="nav-link-title">
@@ -63,9 +63,9 @@
                   </span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item">                   
                 <a class="nav-link" href="{{route('home-banner')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
                   </span>
                   <span class="nav-link-title">
@@ -75,7 +75,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('blog-list')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M3 4h18a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-18a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2z" />
@@ -91,7 +91,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('service-list')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M11.5 4.5l-1 -1.732a1 1 0 0 0 -1.732 0l-1 1.732a2.5 2.5 0 0 1 -1.232 .832l-1.997 .287a1 1 0 0 0 -.608 1.552l1.448 1.396a2.5 2.5 0 0 1 0 2.924l-1.448 1.396a1 1 0 0 0 .608 1.552l1.997 .287a2.5 2.5 0 0 1 1.232 .832l1 1.732a1 1 0 0 0 1.732 0l1 -1.732a2.5 2.5 0 0 1 1.232 -.832l1.997 -.287a1 1 0 0 0 .608 -1.552l-1.448 -1.396a2.5 2.5 0 0 1 0 -2.924l1.448 -1.396a1 1 0 0 0 -.608 -1.552l-1.997 -.287a2.5 2.5 0 0 1 -1.232 -.832z" />
@@ -108,7 +108,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('team-member')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <circle cx="9" cy="7" r="4" />
@@ -124,7 +124,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('appointment')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <rect x="4" y="5" width="16" height="16" rx="2" />
@@ -141,7 +141,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('testimonial')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M3 20v-2a4 4 0 0 1 4 -4h6a4 4 0 0 1 4 4v2" />
@@ -157,7 +157,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('logout')}}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M14 8v-2a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2v-2" />

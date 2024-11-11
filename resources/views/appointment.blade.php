@@ -53,7 +53,7 @@ Appointment List
     if (confirm('Are you sure you want to change the status of your appointment')) {
       updateStatus(appointmentId, checkbox);
     } else {
-      checkbox.checked = false; // Revert checkbox if canceled
+      checkbox.checked = false;
     }
   }
 
@@ -69,12 +69,12 @@ Appointment List
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        window.location.reload(); // Corrected line to reload the page
+        window.location.reload(); 
         document.getElementById(`appointment-${appointmentId}`).classList.add('bg-success', 'text-white');
-        checkbox.disabled = true; // Disable the checkbox after marking as completed
+        checkbox.disabled = true; 
       } else {
         alert('Failed to update status. Please try again.');
-        checkbox.checked = !checkbox.checked; // Revert checkbox if failed
+        checkbox.checked = !checkbox.checked; 
       }
     })
   }

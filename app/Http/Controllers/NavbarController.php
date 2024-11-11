@@ -49,7 +49,7 @@ class NavbarController extends Controller
         // Validate the request
         $validator = Validator::make($request->all(), [
             'title' => 'sometimes|required|max:255',  // Use 'sometimes' to allow partial updates
-            'description' => 'sometimes|required|max:255',
+            'description' => 'sometimes|required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif',
         ]);
     

@@ -221,8 +221,8 @@ class BlogController extends Controller
             
             if ($member) {
                 // Update only fields that are provided
-                if ($request->has('title')) {
-                    $member->title = $request->title;
+                if ($request->has('name')) {
+                    $member->name = $request->name;
                 }
 
                 if ($request->has('designation')) {
