@@ -13,5 +13,6 @@ Route::get('home-banner', [ApiController::class, 'home_banner'])->name('home-ban
 route::get('/blog-list', [ApiController::class, 'blog_list'])->name('blog-list')->name('blog-list');
 route::get('/service-list', [ApiController::class, 'service'])->name('service-list');
 route::get('/team-member', [ApiController::class, 'team_member'])->name('team-member');
+route::get('/testimonial', [ApiController::class, 'testimonial'])->name('testimonial');
 route::post('store-appointment', [ApiController::class, 'store'])->name('store-appointment');
 Route::post('/appointment/{id}/status', [ApiController::class, 'updateStatus']);

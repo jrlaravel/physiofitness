@@ -7,6 +7,7 @@ use App\Models\Blog_detail;
 use App\Models\Member_detail;
 use App\Models\Service_detail;
 use App\Models\Appointment;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -37,6 +38,11 @@ class ApiController extends Controller
     {
         $member = Member_detail::all();
         return response()->json($member);
+    }
+    public function testimonial()
+    {
+        $testimonial = Testimonial::all();
+        return response()->json($testimonial);
     }
 
 
