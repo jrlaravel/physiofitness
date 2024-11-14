@@ -12,17 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('banner_detail', function (Blueprint $table) {
-            //
+            $table->string('name');
         });
     }
 
     /**
      * Reverse the migrations.
-     */
+     */ 
     public function down(): void
     {
         Schema::table('banner_detail', function (Blueprint $table) {
-            //
+            $table->string('name');
+
         });
     }
 };

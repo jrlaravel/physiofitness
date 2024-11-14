@@ -49,6 +49,7 @@ Home-Banner Details
               <th>No.</th>
               <th>Image</th>
               <th>Title</th>
+              <th>Name</th>
               <th>Description</th>
               <th>Action</th>
             </tr>
@@ -61,6 +62,7 @@ Home-Banner Details
                 <img src="{{ asset('storage/banner/'.$banner->image)}}" alt="Image" width="150" height="100">
               </td>
               <td class="text-secondary" ><a href="#" class="text-reset">{{$banner->title}}</a></td>
+              <td class="text-secondary" >{{$banner->name}}</td>
               <td class="text-secondary" 
                   title="{{ $banner->description }}">  <!-- This will show the full description on hover -->
                   {{ \Illuminate\Support\Str::limit($banner->description, 20) }}  <!-- Show only the first 20 words -->

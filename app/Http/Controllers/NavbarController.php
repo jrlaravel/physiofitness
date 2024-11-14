@@ -46,6 +46,7 @@ class NavbarController extends Controller
 
     public function store_banner(Request $request)
     {
+        // return $request->all();
         // Validate the request
         $validator = Validator::make($request->all(), [
             'title' => 'sometimes|required|max:255',
