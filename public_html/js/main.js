@@ -197,10 +197,10 @@ observer.observe(document.getElementById('counter-section'));
     playPauseBtn.addEventListener('click', function () {
       if (video.paused) {
         video.play();
-        playPauseBtn.innerHTML = `<img src="assets/images/pause.png" alt="Pause" class="play-icon">`; 
+        playPauseBtn.innerHTML = `<img src="{{asset('assets/images/pause.png')}}" alt="Pause" class="play-icon">`; 
       } else {
         video.pause();
-        playPauseBtn.innerHTML = `<img src="assets/images/play.png" alt="Play" class="play-icon">`; 
+        playPauseBtn.innerHTML = `<img src="{{asset('assets/images/play.png')}}" alt="Play" class="play-icon">`; 
       }
     });
   

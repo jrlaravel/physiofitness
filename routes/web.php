@@ -6,6 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\BlogController;
 
+Route::get('' , function(){
+    return view('index');
+});
 Route::get('/pf-admin', [LoginController::class, 'index'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('forget-password', [LoginController::class, 'forget_password'])->name('forget-password');

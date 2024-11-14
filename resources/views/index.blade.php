@@ -16,14 +16,14 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('css/responsive.cs')}}s">
 </head>
 
 <body>
 
   <!-- First Section -->
-  <section class="first-section bg-black flex-col-bet" id="banner">
+  <section class="first-section bg-black flex-col-bet" id="banner" style="background-image: url({{asset('assets/images/banner1.png')}})">
     <nav class="navbar navbar-expand-lg border-nav w-100 padd-lg-nav">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt=""></a>
@@ -50,29 +50,28 @@
             </li>
           </ul>
         </div>
-        <a href="#" class="btn-rounded-border navbar-btn clr-white desc-md">Book Appointment</a>
+        <a href="#contact" class="btn-rounded-border navbar-btn clr-white desc-md">Book Appointment</a>
       </div>
     </nav>
     <div class="home-content text-start flex-col-32 padd-lg">
       <div class="home-content-desc flex-col-10">
         <div class="heading-3" id="title">Power of Physiotherapy: <br> Simple and effective treatments</div>
-        <!--<img src="assets/images/Vector (2).png" width="610px" height="10px" style="margin-top: -19px;" alt="">-->
         <p class="desc-md fw-regular" id="description">Experience the transformative power of physiotherapy. Our expert
           team
           offers a range of simple yet effective treatments to address a wide range of conditions, from chronic pain to
           sports injuries. Let us help you unlock your body's potential and achieve optimal health and well-being.</p>
       </div>
-      <a href="#" class="btn-rounded-filled fw-bold desc-md clr-blue">Book Appointment</a>
+      <a href="#contact" class="btn-rounded-filled fw-bold desc-md clr-blue">Book Appointment</a>
     </div>
   </section>
 
   <!-- Second-Section -->
   <section class="second-section" id="about">
-    <div class="desc-md second-wel clr-primary text-center" >Welcome to Physio Fitness</div>
+    <div class="desc-md second-wel clr-primary text-center" >Welcome to PhysioFitness</div>
     <div class="flex-col-80">
       <div class="flex-col-32 second-content">
         <div class="heading-4 clr-heading" >Rajkot's premier physiotherapy center,
-          offers optimal Physio- therapy solutions. </div>
+          offers optimal Physio-therapy solutions. </div>
         <div class="desc-md clr-desc">
           <strong>Dr. Urvashi Kaneriya</strong>, the founder of Physio Fitness, is dedicated to helping you achieve your
           optimal health
@@ -90,15 +89,6 @@
                 <img id="memberImg" src="assets/images/member1.png" alt="">
                 <div class="member-details">
                   <div class="heading-6" id="name">Dr. Urvashi Kaneriya</div>
-                  <div class="desc-rg" id="designation">M.P.T. ( Orthopedic & Sports)</div>
-                </div>
-              </div>
-            </div>
-             <div class="item">
-              <div class="card-cs flex-col-20">
-                <img id="memberImg" src="assets/images/member4.png" alt="">
-                <div class="member-details">
-                  <div class="heading-6" id="name">Dr. dIYA pATEL</div>
                   <div class="desc-rg" id="designation">M.P.T. ( Orthopedic & Sports)</div>
                 </div>
               </div>
@@ -121,8 +111,8 @@
                     appointments.
                   </div>
                   <div class="member-details-hovered">
-                    <div class="heading-6 clr-white" id="name"></div>
-                    <div class="desc-rg clr-white" id="designation">M.P.T. ( Orthopedic & Sports)</div>
+                    <div class="heading-6 clr-white" id="name">Dr. dIYA pATEL</div>
+                    <div class="desc-rg clr-white" id="designation">B.P.T. </div>
                   </div>
                 </div>
               </div>
@@ -188,7 +178,7 @@
       <div class="flex-col-24 section-row-desc">
         <div class="desc-md clr-desc">Whether you're recovering from an injury or simply looking to improve your overall
           well-being, our personalized approach ensures that you receive the right treatment at the right time.</div>
-        <a href="#" class="btn-rounded-fill-pri">Schedule Consultation</a>
+        <a href="#contact" class="btn-rounded-fill-pri">Schedule Consultation</a>
       </div>
     </div>
     <div id="carouselExample" class="owl-carousel owl-theme carousel-treatment">
@@ -254,7 +244,7 @@
           <div class="count-desc">qualified Doctors</div>
         </div>
         <div class="count-content">
-          <div class="count-no" data-target="600" data-start="100">100</div>
+          <div class="count-no" data-target="600" data-start="100">100+</div>
           <div class="count-desc">Satisfied Patients</div>
         </div>
         <div class="count-content">
@@ -439,15 +429,15 @@
           <div class="item">
             <div class="card-testomonial">
               <div class="video-container">
-                <video src="assets/videos/testimonial1.mp4" class="video-testi" id="zumbaVideo"></video>
+                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
                 <div class="video-controls">
-                  <button id="playPauseBtn" class="play-pause-btn"><img id="playPauseImg" src="assets/images/play.png"
+                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
                       alt=""></button>
                 </div>
               </div>
 
               <div class="testi-des">
-                <img src="assets/images/quote.png" class="quote-img" alt="">
+                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
                 <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
                   treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
                   physiotherapists took the time to understand my specific needs and developed a tailored treatment
@@ -463,15 +453,15 @@
           <div class="item">
             <div class="card-testomonial">
               <div class="video-container">
-                <video src="assets/videos/testimonial1.mp4" class="video-testi" id="zumbaVideo"></video>
+                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
                 <div class="video-controls">
-                  <button id="playPauseBtn" class="play-pause-btn"><img id="playPauseImg" src="assets/images/play.png"
+                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
                       alt=""></button>
                 </div>
               </div>
 
               <div class="testi-des">
-                <img src="assets/images/quote.png" class="quote-img" alt="">
+                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
                 <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
                   treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
                   physiotherapists took the time to understand my specific needs and developed a tailored treatment
@@ -487,15 +477,15 @@
           <div class="item">
             <div class="card-testomonial">
               <div class="video-container">
-                <video src="assets/videos/testimonial1.mp4" class="video-testi" id="zumbaVideo"></video>
+                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
                 <div class="video-controls">
-                  <button id="playPauseBtn" class="play-pause-btn"><img id="playPauseImg" src="assets/images/play.png"
+                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
                       alt=""></button>
                 </div>
               </div>
 
               <div class="testi-des">
-                <img src="assets/images/quote.png" class="quote-img" alt="">
+                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
                 <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
                   treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
                   physiotherapists took the time to understand my specific needs and developed a tailored treatment
@@ -511,15 +501,15 @@
           <div class="item">
             <div class="card-testomonial">
               <div class="video-container">
-                <video src="assets/videos/testimonial1.mp4" class="video-testi" id="zumbaVideo"></video>
+                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
                 <div class="video-controls">
-                  <button id="playPauseBtn" class="play-pause-btn"><img id="playPauseImg" src="assets/images/play.png"
+                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
                       alt=""></button>
                 </div>
               </div>
 
               <div class="testi-des">
-                <img src="assets/images/quote.png" class="quote-img" alt="">
+                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
                 <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
                   treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
                   physiotherapists took the time to understand my specific needs and developed a tailored treatment
@@ -538,7 +528,7 @@
 
   <!-- Seventh Section -->
   <section class="seventh-section padd-lg">
-    <div class="desc-md second-wel clr-primary text-center"  >Get Moving with Zumba</div>
+    <div class="desc-md second-wel clr-primary text-center">Get Moving with Zumba</div>
     <div class="flex-col-80">
       <div class="flex-col-32 second-content">
         <div class="heading-4 clr-heading" >Move, Groove, Get Fit:
@@ -546,13 +536,13 @@
       </div>
       <div class="flex-col-48 align-items-center">
         <div class="video-container">
-          <video class="video-zumba" id="zumbaVideo" src="assets/videos/zumba.mp4"></video>
+          <video class="video-zumba video" id="videoPlay" src="{{asset('assets/videos/zumba.mp4')}}"></video>
           <div class="video-controls">
-            <button id="playPauseBtn" class="play-pause-btn"><img id="playPauseImg" src="assets/images/play.png"
+            <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
                 alt=""></button>
           </div>
         </div>
-        <a href="#" class="btn-rounded-fill-pri">Book Your Zumba Slot</a>
+        <a href="#contact" class="btn-rounded-fill-pri">Book Your Zumba Slot</a>
       </div>
     </div>
   </section>
@@ -571,7 +561,7 @@
         <div class="desc-md clr-desc">Get expert advice on health and wellness from our team of skilled
           physiotherapists.
           Discover valuable tips and insights to improve your overall well-being.</div>
-        <a href="#" class="btn-rounded-border-pri">Get Expert Advice</a>
+        <a href="#contact" class="btn-rounded-border-pri">Get Expert Advice</a>
       </div>
     </div>
     <div id="tipsCarousel" class="owl-carousel owl-theme carousel-treatment">
@@ -629,7 +619,7 @@
               start your journey to recovery today.
             </div>
           </div>
-          <a href="#" class="btn-rounded-filled fw-bold desc-md clr-blue w-auto">Book Your Free Consultation</a>
+          <a href="#contact" class="btn-rounded-filled fw-bold desc-md clr-blue w-auto">Book Your Free Consultation</a>
         </div>
       </div>
     </div>
@@ -646,7 +636,7 @@
           <div class="desc-md clr-desc">Find answers to your most common questions about physiotherapy. Our FAQ section
             provides
             clear and concise information to help you learn more about physiotherapy.</div>
-          <a href="#" class="btn-rounded-fill-pri">Let’s have a Chat</a>
+          <a href="#contact" class="btn-rounded-fill-pri">Let’s have a Chat</a>
         </div>
       </div>
       <div class="col-md-6 col-12 faq-accord">
@@ -881,7 +871,182 @@
 
     
   <!-- Custom Script -->
-  <script src="main.js"></script>
+  <script>
+function openModal(modalId) {
+    var modal = new bootstrap.Modal(document.getElementById(modalId), {
+      keyboard: false // Disable closing with Escape key
+    });
+    modal.show();
+  }
+
+  $(document).ready(function(){
+    $("#carouselExample").owlCarousel({
+      items: 4, // Show 3.5 items by default
+      margin: 20, // Space between items
+      loop: true, // Enable loop
+      nav: false, // Enable navigation buttons
+      dots: true, // Enable dots
+      autoplay: true, // Enable autoplay
+      autoplayTimeout: 3000, // Set autoplay timeout to 5 seconds
+      responsive: {
+        0: {
+          items: 1 // 1 item on small screens
+        },
+        600: {
+          items: 1 // 2 items on medium screens
+        },
+        1000: {
+          items: 4 // 3.5 items on large screens
+        }
+      }
+    });
+  });
+
+  $(document).ready(function(){
+    $("#testimonialCarousel").owlCarousel({
+      items: 1, // Show 3.5 items by default
+      margin: 20, // Space between items
+      loop: true, // Enable loop
+      nav: true, // Enable navigation buttons
+      navText: [
+        '<img src="assets/images/prev.png" alt="prev">', // Custom left arrow image
+        '<img src="assets/images/next.png" alt="next">' // Custom right arrow image
+      ],
+      dots: false, // Enable dots
+      // autoplay: true, // Enable autoplay
+      autoplayTimeout: 3000, // Set autoplay timeout to 5 seconds
+      responsive: {
+        0: {
+          items: 1 // 1 item on small screens
+        },
+        600: {
+          items: 1 // 2 items on medium screens
+        },
+        1000: {
+          items: 1 // 3.5 items on large screens
+        }
+      }
+    });
+  });
+
+// 
+$(document).ready(function(){
+  $("#tipsCarousel").owlCarousel({
+    items: 4, // Show 3.5 items by default
+    margin: 20, // Space between items
+    loop: true, // Enable loop
+    nav: false, // Enable navigation buttons
+    dots: true, // Enable dots
+    autoplay: true, // Enable autoplay
+    autoplayTimeout: 3000, // Set autoplay timeout to 5 seconds
+    responsive: {
+      0: {
+        items: 1 // 1 item on small screens
+      },
+      600: {
+        items: 1 // 2 items on medium screens
+      },
+      1000: {
+        items: 2.5 // 3.5 items on large screens
+      },
+      1600: {
+        items: 3 // 3.5 items on large screens
+      }
+    }
+  });
+});
+
+$(document).ready(function(){
+  $("#drCarousel").owlCarousel({
+    items: 4, // Show 3.5 items by default
+    margin: 20, // Space between items
+    loop: true, // Enable loop
+    nav: false, // Enable navigation buttons
+    dots: true, // Enable dots
+    autoplay: true, // Enable autoplay
+    autoplayTimeout: 3000, // Set autoplay timeout to 5 seconds
+    responsive: {
+      0: {
+        items: 1 // 1 item on small screens
+      },
+      600: {
+        items: 1 // 2 items on medium screens
+      },
+      1000: {
+        items: 4 // 3.5 items on large screens
+      }
+    }
+  });
+});
+const counters = document.querySelectorAll('.count-no');
+let counterStarted = false;
+
+const startCounters = () => {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const start = +counter.getAttribute('data-start') || 0;
+    const increment = (target - start) / 100;
+    let count = start;
+
+    // Determine the suffix to display from the start
+    let suffix = '';
+    if (counter.getAttribute('data-target') == '95') {
+      suffix = '%'; // for reduction in pain, append %
+    } else if (counter.getAttribute('data-target') != '600') {
+      suffix = '+'; // for years of excellence and qualified doctors, append +
+    }
+
+    // Set the counter with suffix initially
+    counter.textContent = start + suffix;
+
+    const updateCounter = () => {
+      count += increment;
+      if (count < target) {
+        counter.textContent = Math.ceil(count) + suffix; // Update with suffix
+        setTimeout(updateCounter, 10);
+      } else {
+        counter.textContent = target + suffix; // Final value with suffix
+      }
+    };
+
+    updateCounter();
+  });
+};
+
+// Using Intersection Observer to trigger the animation when the section is in view
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !counterStarted) {
+    startCounters();
+    counterStarted = true;
+  }
+});
+
+observer.observe(document.getElementById('counter-section'));
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('zumbaVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+  
+    playPauseBtn.addEventListener('click', function () {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.innerHTML = `<img src="{{asset('assets/images/pause.png')}}" alt="Pause" class="play-icon">`; 
+      } else {
+        video.pause();
+        playPauseBtn.innerHTML = `<img src="{{asset('assets/images/play.png')}}" alt="Play" class="play-icon">`; 
+      }
+    });
+  
+    video.addEventListener('play', function () {
+      playPauseBtn.style.opacity = '0';  
+    });
+  
+    video.addEventListener('pause', function () {
+      playPauseBtn.style.opacity = '1';  
+    });
+  });
+  </script>
 </body>
 
 </html>
