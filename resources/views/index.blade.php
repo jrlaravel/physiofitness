@@ -23,47 +23,53 @@
 <body>
 
   <!-- First Section -->
-  <section class="first-section bg-black flex-col-bet" id="banner" style="background-image: url({{asset('assets/images/banner1.png')}})">
-    <nav class="navbar navbar-expand-lg border-nav w-100 padd-lg-nav">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <img src="assets/images/menu.png" alt="">
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link clr-white desc-md active" aria-current="page" href="#about">Who We Are</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link clr-white desc-md" href="#service">Our Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link clr-white desc-md" href="#testimonial">Testimonials</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link clr-white desc-md" href="#tips">Expert Tips</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link clr-white desc-md" href="#contact">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-        <a href="#contact" class="btn-rounded-border navbar-btn clr-white desc-md">Book Appointment</a>
+  <?php
+  // Fetch banner data from API
+  $url = "https://physiofitnessrajkot.com/api/home-banner"; // API URL
+  $response = file_get_contents($url);
+  $banner = json_decode($response, true); // Decode the JSON response into an associative array
+  
+  // Check if data was retrieved successfully
+  if (!empty($banner)) {
+      foreach ($banner as $data) { // Loop through each banner item (if there are multiple)
+  ?>
+  
+  <section class="first-section bg-black flex-col-bet" id="banner" style="background-image: url(<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/banner/' . $data['image']); ?>);">
+      <nav class="navbar navbar-expand-lg border-nav w-100 padd-lg-nav">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="Logo"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <img src="assets/images/menu.png" alt="Menu">
+              </button>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                      <li class="nav-item"><a class="nav-link clr-white desc-md active" href="#about">Who We Are</a></li>
+                      <li class="nav-item"><a class="nav-link clr-white desc-md" href="#service">Our Services</a></li>
+                      <li class="nav-item"><a class="nav-link clr-white desc-md" href="#testimonial">Testimonials</a></li>
+                      <li class="nav-item"><a class="nav-link clr-white desc-md" href="#tips">Expert Tips</a></li>
+                      <li class="nav-item"><a class="nav-link clr-white desc-md" href="#contact">Contact Us</a></li>
+                  </ul>
+              </div>
+              <a href="#contact" class="btn-rounded-border navbar-btn clr-white desc-md">Book Appointment</a>
+          </div>
+      </nav>
+  
+      <div class="home-content text-start flex-col-32 padd-lg">
+          <div class="home-content-desc flex-col-10">
+              <div class="heading-3" id="title"><?php echo htmlspecialchars($data['title']); ?></div>
+              <p class="desc-md fw-regular" id="description"><?php echo htmlspecialchars($data['description']); ?></p>
+          </div>
+          <a href="#contact" class="btn-rounded-filled fw-bold desc-md clr-blue">Book Appointment</a>
       </div>
-    </nav>
-    <div class="home-content text-start flex-col-32 padd-lg">
-      <div class="home-content-desc flex-col-10">
-        <div class="heading-3" id="title">Power of Physiotherapy: <br> Simple and effective treatments</div>
-        <p class="desc-md fw-regular" id="description">Experience the transformative power of physiotherapy. Our expert
-          team
-          offers a range of simple yet effective treatments to address a wide range of conditions, from chronic pain to
-          sports injuries. Let us help you unlock your body's potential and achieve optimal health and well-being.</p>
-      </div>
-      <a href="#contact" class="btn-rounded-filled fw-bold desc-md clr-blue">Book Appointment</a>
-    </div>
   </section>
+  
+  <?php 
+      } // End foreach loop
+  } else {
+      echo "<p>Error fetching banner data. Please try again later.</p>";
+  }
+  ?>
+  
 
   <!-- Second-Section -->
   <section class="second-section" id="about">
@@ -872,6 +878,7 @@
     
   <!-- Custom Script -->
   <script>
+
 function openModal(modalId) {
     var modal = new bootstrap.Modal(document.getElementById(modalId), {
       keyboard: false // Disable closing with Escape key
