@@ -624,36 +624,45 @@
   </section>
 
   <!-- Eleventh Section -->
-  <section class="eleventh-section" id="contact">
+<section class="eleventh-section" id="contact">
     <div class="form-content">
-      <div class="flex-col">
-        <div class="heading-4"  >Book Your Appointment Now
-          Fill Out the form below</div>
-        <hr class="form-hr">
-        <div class="elev-desc desc-md">Ready to take the first step towards a pain-free life?
-          Fill out our contact form and schedule your appointment today.</div>
-      </div>
-      <form>
-        <div class="input-field">
-          <input type="text" placeholder="Full Name*" required>
+        <div class="flex-col">
+            <div class="heading-4">Book Your Appointment Now
+                Fill Out the form below
+            </div>
+            <hr class="form-hr">
+            <div class="elev-desc desc-md">Ready to take the first step towards a pain-free life?
+                Fill out our contact form and schedule your appointment today.
+            </div>
         </div>
-        <div class="input-field">
-          <input type="text" placeholder="Phone Number*" required>
-        </div>
-        <div class="input-field">
-          <input type="email" placeholder="Email Address*" required>
-        </div>
-        <div class="input-field">
-          <input type="number" placeholder="Age" required>
-        </div>
-        <div class="input-field full-width">
-          <textarea placeholder="What you want to know?*" required></textarea>
-        </div>
-        <a href="#" class="btn-rounded-filled form-btn fw-bold desc-md clr-blue w-full">Book Your Appointment</a>
-      </form>
+        <form id="appointmentForm">
+            <div class="input-field">
+                <input type="text" name="name" placeholder="Full Name*" required>
+            </div>
+            <div class="input-field">
+                <input type="text" name="phone" placeholder="Phone Number*" required>
+            </div>
+            <div class="input-field">
+                <input type="email" name="email" placeholder="Email Address*" required>
+            </div>
+            <div class="input-field">
+                <input type="number" name="age" placeholder="Age" required>
+            </div>
+            <div class="input-field full-width">
+                <textarea name="message" placeholder="What you want to know?*" required></textarea>
+            </div>
+            <button type="submit" class="btn-rounded-filled form-btn fw-bold desc-md clr-blue w-full">Book Your Appointment</button>
+        </form>
     </div>
-  </section>
+</section>
+
   <!-- Footer -->
+  <?php
+  $url = "https://physiofitnessrajkot.com/api/navbar-detail"; // Replace with your API URL
+  $response = file_get_contents($url);
+  $banner = json_decode($response, true);
+  foreach ($banner as $data) {
+?>
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo flex-col-24 justify-content-start">
@@ -665,9 +674,9 @@
           solutions.
         </div>
         <div class="footer-social">
-          <a href="#"><img src="assets/images/instagram.png" alt=""></a>
-          <a href="#"><img src="assets/images/youtube.png" alt=""></i></a>
-          <a href="#"><img src="assets/images/fb.png" alt=""></a>
+          <a href="<?php echo htmlspecialchars($data['instagram_url']); ?>" target="_blank"><img src="assets/images/instagram.png" alt=""></a>
+          <a href="<?php echo htmlspecialchars($data['youtube_url']); ?>" target="_blank"><img src="assets/images/youtube.png" alt=""></i></a>
+          <a href="<?php echo htmlspecialchars($data['facebook_url']); ?>" target="_blank"><img src="assets/images/fb.png" alt=""></a>
         </div>
       </div>
       <div class="footer-links">
@@ -682,18 +691,16 @@
       </div>
       <div class="footer-contact flex-col-24 justify-content-start">
         <div class="flex-18">
-          <img src="assets/images/pin.png" alt="">
-          <a href="https://maps.app.goo.gl/GsCdEdBafiNYbiYY6" target="_blank" class="fw-semibold clr-white">6th Floor,
-            Fortune Experia, Speedwell Party Plot, Near Shyamji Skyline Appartment, Mota Mava, Rajkot, Gujarat
-            360005</a>
+          <img src="{{asset('assets/images/pin.png')}}" alt="">
+          <a href="https://maps.app.goo.gl/GsCdEdBafiNYbiYY6" target="_blank" class="fw-semibold clr-white"><?php echo htmlspecialchars($data['address']); ?></a>
         </div>
         <div class="flex-18">
-          <img src="assets/images/phone.png" alt="">
-          <a href="tel:+91 91061 12843" class="fw-semibold clr-white">+91 91061 12843</a>
+          <img src="{{asset('assets/images/phone.png')}}" alt=""> 
+          <a href="tel:+91 91061 12843" class="fw-semibold clr-white">+91 <?php echo htmlspecialchars($data['phone']); ?></a>
         </div>
         <div class="flex-18">
-          <img src="assets/images/mail.png" alt="">
-          <a href="mailto:care@physiofitness.com" class="fw-semibold clr-white">care@physiofitness.com</a>
+          <img src="{{asset('assets/images/mail.png')}}" alt="">
+          <a href="mailto:care@physiofitness.com" class="fw-semibold clr-white"><?php echo htmlspecialchars($data['email']); ?></a>
         </div>
       </div>
       <div class="footer-map">
@@ -708,38 +715,8 @@
       </div>
     </div>
   </footer>
+  <?php } ?>
 
-
-  <!-- Modal for Tips 1 -->
-  <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-side">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><img src="assets/images/close.png" alt=""></button>
-        </div>
-        <div class="heading-4 clr-white">Top 10 Exercise to keep Your Spine
-          straight & Healthy</div>
-        <hr class="clr-white">
-        <div class="desc-lg fw-regular clr-gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-          architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-          aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </div>
-        <div class="desc-lg fw-regular clr-gray">But I must explain to you how all this mistaken idea of denouncing
-          pleasure and praising pain was born and I will give you a complete account of the system, and expound the
-          actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects,
-          dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue
-          pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or
-          pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur.
-          Quis autem vel eum iure reprehenderit Quis </div>
-        <hr class="clr-white">
-        <div class="flex-20 btn-btn">
-          <a href="#" class="btn-rounded-filled">Jump to Next Blog</a>
-          <a href="#" class="btn-rounded-border-white">Jump to Previous Blog</a>
-
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
   <!-- jQuery (necessary for Owl Carousel) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -934,6 +911,38 @@ observer.observe(document.getElementById('counter-section'));
       playPauseBtn.style.opacity = '1';  
     });
   });
+
+  document.getElementById('appointmentForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Collect form data
+    const formData = new FormData(this);
+    const formObject = Object.fromEntries(formData);
+
+    try {
+        const response = await fetch('https://physiofitnessrajkot.com/api/store-appointment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formObject)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Appointment created successfully!');
+            this.reset(); // Clear form fields on success
+        } else {
+            alert('Failed to create appointment. ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    }
+});
+
+
   </script>
 </body>
 
