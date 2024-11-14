@@ -59,7 +59,7 @@
               <div class="heading-3" id="title"><?php echo htmlspecialchars($data['title']); ?></div>
               <p class="desc-md fw-regular" id="description"><?php echo htmlspecialchars($data['description']); ?></p>
           </div>
-          <a href="#contact" class="btn-rounded-filled fw-bold desc-md clr-blue">Book Appointment</a>
+          <a href="#contact" class="btn-rounded-filled fw-regular desc-md clr-blue">Book Appointment</a>
       </div>
   </section>
   
@@ -87,89 +87,53 @@
           to support you every step of the way.
         </div>
       </div>
-      <div class="second-cards">
+          <?php
+    // Fetch member data from the API
+    $memberUrl = "https://physiofitnessrajkot.com/api/team-member"; // Replace with your API endpoint
+    $memberResponse = file_get_contents($memberUrl);
+    $members = json_decode($memberResponse, true); // Decode JSON response
+
+    // Check if the member data was retrieved successfully
+    if (!empty($members)) {
+    ?>
+
+    <div class="second-cards">
         <div class="flex-28-wrap">
-          <div id="drCarousel" class="owl-carousel owl-theme">
-            <div class="item">
-              <div class="card-cs flex-col-20">
-                <img id="memberImg" src="assets/images/member1.png" alt="">
-                <div class="member-details">
-                  <div class="heading-6" id="name">Dr. Urvashi Kaneriya</div>
-                  <div class="desc-rg" id="designation">M.P.T. ( Orthopedic & Sports)</div>
+            <div id="drCarousel" class="owl-carousel owl-theme">
+                <?php foreach ($members as $data) { ?>
+                <div class="item">
+                    <div class="card-cs">
+                        <!-- Unhovered State -->
+                        <div class="unhovered flex-col-20">
+                            <img id="memberImg" src="<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/member/' . $data['image']); ?>" alt="Member Image">
+                            <div class="member-details">
+                                <div class="heading-6" id="name"><?php echo htmlspecialchars($data['name']); ?></div>
+                                <div class="desc-rg" id="designation"><?php echo htmlspecialchars($data['designation']); ?></div>
+                            </div>
+                        </div>
+                        <!-- Hovered State -->
+                        <div class="hovered">
+                            <div class="desc-rg clr-white">
+                                <?php echo htmlspecialchars($data['description']); ?>
+                            </div>
+                            <div class="member-details-hovered">
+                                <div class="heading-6 clr-white" id="name"><?php echo htmlspecialchars($data['name']); ?></div>
+                                <div class="desc-rg clr-white" id="designation"><?php echo htmlspecialchars($data['designation']); ?></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <?php } ?>
             </div>
-            <div class="item">
-              <div class="card-cs">
-                <div class="unhovered  flex-col-20">
-                  <img id="memberImg" src="assets/images/member2.png" alt="">
-                  <div class="member-details">
-                    <div class="heading-6" id="name">Dr. Krishna Sarvaiya</div>
-                    <div class="desc-rg" id="designation">M.P.T. ( Orthopedic & Sports)</div>
-                  </div>
-                </div>
-                <div class="hovered">
-                  <div class="desc-rg clr-white">
-                    Dr. [Doctor's Name] is a skilled physiotherapist with a focus on [Specialty 1]. He has a proven
-                    track
-                    record of helping patients achieve their rehabilitation goals. Dr. [Doctor's Name] is known for his
-                    friendly and approachable demeanor, making patients feel comfortable and at ease during their
-                    appointments.
-                  </div>
-                  <div class="member-details-hovered">
-                    <div class="heading-6 clr-white" id="name">Dr. dIYA pATEL</div>
-                    <div class="desc-rg clr-white" id="designation">B.P.T. </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="card-cs flex-col-20">
-                <img id="memberImg" src="assets/images/member3.png" alt="">
-                <div class="member-details">
-                  <div class="heading-6" id="name">Dr. kEYA vYAS</div>
-                  <div class="desc-rg" id="designation">B.P.T. </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="card-cs flex-col-20">
-            <img id="memberImg" src="assets/images/member1.png" alt="">
-            <div class="member-details">
-              <div class="heading-6" id="name">Dr. Urvashi Kaneriya</div>
-              <div class="desc-rg" id="designation">M.P.T. ( Orthopedic & Sports)</div>
-            </div>
-          </div>
-          <div class="card-cs">
-            <div class="unhovered  flex-col-20">
-              <img id="memberImg" src="assets/images/member2.png" alt="">
-              <div class="member-details">
-                <div class="heading-6" id="name">Dr. Krishna Sarvaiya</div>
-                <div class="desc-rg" id="designation">M.P.T. ( Orthopedic & Sports)</div>
-              </div>
-            </div>
-            <div class="hovered">
-              <div class="desc-rg clr-white">
-                Dr. [Doctor's Name] is a skilled physiotherapist with a focus on [Specialty 1]. He has a proven track
-                record of helping patients achieve their rehabilitation goals. Dr. [Doctor's Name] is known for his
-                friendly and approachable demeanor, making patients feel comfortable and at ease during their
-                appointments.
-              </div>
-              <div class="member-details-hovered">
-                <div class="heading-6 clr-white" id="name">Dr. dIYA pATEL</div>
-                <div class="desc-rg clr-white" id="designation">B.P.T. </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-cs flex-col-20">
-            <img id="memberImg" src="assets/images/member3.png" alt="">
-            <div class="member-details">
-              <div class="heading-6" id="name">Dr. kEYA vYAS</div>
-              <div class="desc-rg" id="designation">B.P.T. </div>
-            </div>
-          </div> -->
         </div>
-      </div>
+    </div>
+
+<?php
+} else {
+    echo "<p>No members found. Please check back later.</p>";
+}
+?>
+
     </div>
   </section>
 
@@ -187,42 +151,39 @@
         <a href="#contact" class="btn-rounded-fill-pri">Schedule Consultation</a>
       </div>
     </div>
-    <div id="carouselExample" class="owl-carousel owl-theme carousel-treatment">
+    <?php
+    // API URL
+    $url = "https://physiofitnessrajkot.com/api/service-list"; // Replace with your actual API URL
+
+    // Fetch data from the API
+    $response = file_get_contents($url);
+    $data = json_decode($response, true); // Decode the JSON into an associative array
+  ?>
+
+  <div id="carouselExample" class="owl-carousel owl-theme carousel-treatment">
+    <?php foreach ($data as $item) { ?>
       <div class="item">
-        <div class="card-treatment text-center" onclick="openModal('modal1')">
-          <img src="assets/images/treatment/treatment1.png" alt="">
-          <div class="desc-lg clr-primary">Physiotherapy</div>
+        <div class="card-treatment text-center" onclick="openModal('modal<?php echo $item['id']; ?>')">
+          <img src="<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/service/' . $item['image']); ?>" alt="">
+          <div class="desc-lg clr-primary"><?php echo htmlspecialchars($item['title']); ?></div>
         </div>
       </div>
-      <div class="item">
-        <div class="card-treatment text-center" onclick="openModal('modal1')">
-          <img src="assets/images/treatment/treatment2.png" alt="">
-          <div class="desc-lg clr-primary">Advanced 4D Spinal decompression therapy</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="card-treatment text-center" onclick="openModal('modal1')">
-          <img src="assets/images/treatment/treatment3.png" alt="">
-          <div class="desc-lg clr-primary">BTl Electrotherapy</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="card-treatment text-center" onclick="openModal('modal1')">
-          <img src="assets/images/treatment/treatment1.png" alt="">
-          <div class="desc-lg clr-primary">Cold Laser therapy with nano current</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="card-treatment text-center" onclick="openModal('modal1')">
-          <img src="assets/images/treatment/treatment1.png" alt="">
-          <div class="desc-lg clr-primary">Physiotherapy</div>
+    <?php } ?>
+  </div>
+
+  <!-- Modals -->
+  <?php foreach ($data as $item) { ?>
+    <div class="modal fade" id="modal<?php echo $item['id']; ?>" tabindex="-1" aria-labelledby="modalLabel<?php echo $item['id']; ?>" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-side">
+        <div class="modal-content">
+          <div class="heading-4 clr-white"><?php echo htmlspecialchars($item['image_title']); ?></div>
+          <hr class="clr-white">
+          <div class="desc-lg fw-regular clr-white"><?php echo htmlspecialchars($item['description']); ?></div>
+          <a href="#contact" class="btn-rounded-filled btn-btn">Inquire Now</a>
         </div>
       </div>
     </div>
-
-
-
-
+  <?php } ?>
   </section>
 
   <!-- Fourth Section -->
@@ -420,117 +381,52 @@
 
   <!-- Sixth Section -->
   <section class="sixth-section" id="testimonial">
-    <div class="desc-md second-wel clr-primary text-center"  >Community of Care</div>
+    <div class="desc-md second-wel clr-primary text-center">Community of Care</div>
     <div class="flex-col-80">
-      <div class="flex-col-32 second-content">
-        <div class="heading-4 clr-heading text-center w-100"  >Inspiring Journeys:
-          Physiotherapy Changed Their Lives</div>
-        <div class="desc-md clr-desc">
-          Hear directly from our satisfied patients in these inspiring video testimonials. Watch them share their
-          personal journeys of recovery and transformation through physiotherapy.
+        <div class="flex-col-32 second-content">
+            <div class="heading-4 clr-heading text-center w-100">Inspiring Journeys: Physiotherapy Changed Their Lives</div>
+            <div class="desc-md clr-desc">
+                Hear directly from our satisfied patients in these inspiring video testimonials. Watch them share their
+                personal journeys of recovery and transformation through physiotherapy.
+            </div>
         </div>
-      </div>
-      <div class="testimonial">
-        <div id="testimonialCarousel" class="owl-carousel owl-theme carousel-testimonial">
-          <div class="item">
-            <div class="card-testomonial">
-              <div class="video-container">
-                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
-                <div class="video-controls">
-                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
-                      alt=""></button>
-                </div>
-              </div>
+        <div class="testimonial">
+            <div id="testimonialCarousel" class="owl-carousel owl-theme carousel-testimonial">
 
-              <div class="testi-des">
-                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
-                <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
-                  treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
-                  physiotherapists took the time to understand my specific needs and developed a tailored treatment
-                  plan. After a few weeks, I started to notice a significant improvement. I'm so grateful for the care
-                  and support I received from the team at Physio Fitness.
-                </div>
-                <hr class="testi-hr">
-                <div class="heading-6">truptiben Majethiya</div>
-                <div class="desc-lg">Condition Cured: severe bilateral plantar fasciitis & Back Pain</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="card-testomonial">
-              <div class="video-container">
-                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
-                <div class="video-controls">
-                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
-                      alt=""></button>
-                </div>
-              </div>
+                <?php
+                // Fetch testimonial data from the API
+                $url = "https://physiofitnessrajkot.com/api/testimonial";
+                $response = file_get_contents($url);
+                $testimonials = json_decode($response, true);
 
-              <div class="testi-des">
-                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
-                <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
-                  treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
-                  physiotherapists took the time to understand my specific needs and developed a tailored treatment
-                  plan. After a few weeks, I started to notice a significant improvement. I'm so grateful for the care
-                  and support I received from the team at Physio Fitness.
-                </div>
-                <hr class="testi-hr">
-                <div class="heading-6">truptiben Majethiya</div>
-                <div class="desc-lg">Condition Cured: severe bilateral plantar fasciitis & Back Pain</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="card-testomonial">
-              <div class="video-container">
-                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
-                <div class="video-controls">
-                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
-                      alt=""></button>
-                </div>
-              </div>
+                // Loop through each testimonial to create a dynamic card
+                foreach ($testimonials as $item) {
+                ?>
+                
+                <div class="item">
+                    <div class="card-testomonial">
+                        <!-- Video Section -->
+                        <div class="video-container">
+                            <video src="<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/testimonial/' . $item['video']); ?>" class="video-testi video" controls></video>
+                        </div>
 
-              <div class="testi-des">
-                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
-                <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
-                  treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
-                  physiotherapists took the time to understand my specific needs and developed a tailored treatment
-                  plan. After a few weeks, I started to notice a significant improvement. I'm so grateful for the care
-                  and support I received from the team at Physio Fitness.
+                        <!-- Testimonial Description -->
+                        <div class="testi-des">
+                            <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="Quote Icon">
+                            <div class="desc-lg"><?php echo htmlspecialchars($item['review']); ?></div>
+                            <hr class="testi-hr">
+                            <div class="heading-6"><?php echo htmlspecialchars($item['name']); ?></div>
+                            <div class="desc-lg">Condition Cured: <?php echo htmlspecialchars($item['problem']); ?></div>
+                        </div>
+                    </div>
                 </div>
-                <hr class="testi-hr">
-                <div class="heading-6">truptiben Majethiya</div>
-                <div class="desc-lg">Condition Cured: severe bilateral plantar fasciitis & Back Pain</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="card-testomonial">
-              <div class="video-container">
-                <video src="{{asset('assets/videos/testimonial1.mp4')}}" class="video-testi video" id="videoPlay"></video>
-                <div class="video-controls">
-                  <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
-                      alt=""></button>
-                </div>
-              </div>
 
-              <div class="testi-des">
-                <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="">
-                <div class="desc-lg">I was struggling with debilitating pain in my feet and back for months. Traditional
-                  treatments weren't helping, but the personalized care at Physio Fitness was a game-changer. The
-                  physiotherapists took the time to understand my specific needs and developed a tailored treatment
-                  plan. After a few weeks, I started to notice a significant improvement. I'm so grateful for the care
-                  and support I received from the team at Physio Fitness.
-                </div>
-                <hr class="testi-hr">
-                <div class="heading-6">truptiben Majethiya</div>
-                <div class="desc-lg">Condition Cured: severe bilateral plantar fasciitis & Back Pain</div>
-              </div>
+                <?php } ?>
+
             </div>
-          </div>
         </div>
-      </div>
-  </section>
+    </div>
+</section>
 
   <!-- Seventh Section -->
   <section class="seventh-section padd-lg">
@@ -571,43 +467,49 @@
       </div>
     </div>
     <div id="tipsCarousel" class="owl-carousel owl-theme carousel-treatment">
-      <div class="item tips-item">
-        <div class="card-tips text-start" onclick="openModal('modal2')">
-          <div class="flex-col-32">
-            <div class="flex-col-10">
-              <div class="desc-lg clr-white">Top 10 Exercise to </div>
-              <div class="heading-5 clr-white">keep Your Spine
-                straight & Healthy</div>
-            </div>
-            <div class="desc-md clr-white">-By Dr. Urvashi kaneriya</div>
+      <?php
+      // Fetch blog data from the API
+      $url = "https://physiofitnessrajkot.com/api/blog-list";
+      $response = file_get_contents($url);
+      $blog = json_decode($response, true);
+  
+      // Loop through each blog entry to create a dynamic carousel item
+      foreach ($blog as $item) {
+      ?>
+          <div class="item tips-item" 
+               style="background-image: url('<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/blog/' . $item['image']); ?>');">
+              <div class="card-tips text-start" onclick="openModal('modal2<?php echo $item['id']; ?>')">
+                  <div class="flex-col-32">
+                      <div class="flex-col-10">
+                          <div class="desc-lg clr-white">Top 10 Exercise to</div>
+                          <div class="heading-5 clr-white"><?php echo htmlspecialchars($item['image_title']); ?></div>
+                      </div>
+                      <div class="desc-md clr-white">-By Dr. Urvashi Kaneriya</div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-      <div class="item tips-item">
-        <div class="card-tips text-start" onclick="openModal('modal2')">
-          <div class="flex-col-32">
-            <div class="flex-col-10">
-              <div class="desc-lg clr-white">Top 10 Exercise to </div>
-              <div class="heading-5 clr-white">keep Your Spine
-                straight & Healthy</div>
-            </div>
-            <div class="desc-md clr-white">-By Dr. Urvashi kaneriya</div>
+      <?php } ?>
+  </div>
+  
+  <!-- Dynamic Modals for Each Blog Post -->
+  <?php foreach ($blog as $item) { ?>
+      <div class="modal fade" id="modal2<?php echo $item['id']; ?>" tabindex="-1" aria-labelledby="modalLabel2<?php echo $item['id']; ?>" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-side">
+              <div class="modal-content-tips">
+                  <div class="heading-4 clr-white"><?php echo htmlspecialchars($item['title']); ?></div>
+                  <hr class="clr-white">
+                  <div class="desc-lg fw-regular clr-white">
+                      <?php echo htmlspecialchars($item['description']); ?>
+                  </div>
+                  <hr class="clr-white">
+                  <div class="flex-20 btn-btn">
+                      <a href="#" class="btn-rounded-filled">Jump to Next Blog</a>
+                      <a href="#" class="btn-rounded-border-white">Jump to Previous Blog</a>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-      <div class="item tips-item">
-        <div class="card-tips text-start" onclick="openModal('modal2')">
-          <div class="flex-col-32">
-            <div class="flex-col-10">
-              <div class="desc-lg clr-white">Top 10 Exercise to </div>
-              <div class="heading-5 clr-white">keep Your Spine
-                straight & Healthy</div>
-            </div>
-            <div class="desc-md clr-white">-By Dr. Urvashi kaneriya</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <?php } ?>  
   </section>
 
   <!-- Ninth Section -->
@@ -807,27 +709,6 @@
     </div>
   </footer>
 
-  <!-- Modal for Treatment 1 -->
-  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-side">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><img src="assets/images/close.png" alt=""></button>
-        </div>
-        <div class="heading-4 clr-white">BTl Electrotherapy</div>
-        <hr class="clr-white">
-        <div class="desc-lg fw-regular clr-gray">Physio Fitness offers BTL Electrotherapy, a cutting-edge treatment
-          that uses electricity to stimulate your body's healing process. It's a safe and effective way to relieve pain,
-          reduce inflammation, improve muscle function, and promote tissue regeneration. Our experienced
-          physiotherapists will tailor your BTL Electrotherapy treatment to your specific needs. Whether you're
-          recovering from an injury, managing chronic pain, or seeking to improve your overall well-being, BTL
-          Electrotherapy can be a valuable tool in your healing journey. At Physio Fitness, we're committed to providing
-          you with the highest quality care using the latest technology. Experience the benefits of BTL Electrotherapy
-          and discover how it can help you feel better, faster.</div>
-        <a href="#" class="btn-rounded-filled btn-btn">Inquire Now</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal for Tips 1 -->
   <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
