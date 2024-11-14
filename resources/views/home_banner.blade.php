@@ -28,6 +28,10 @@ Home-Banner Details
       <input type="text" class="form-control" id="title" name="title" required>
   </div>
   <div class="form-group">
+    <label class="form-label mt-3" for="title">Banner name</label>
+    <input type="text" class="form-control" id="title" name="name" required>
+</div>
+  <div class="form-group">
       <label class="form-label mt-3" for="description">Banner Description</label>
       <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
   </div>
@@ -65,6 +69,7 @@ Home-Banner Details
                 <a href="#" class="btn btn-primary edit-banner" 
                 data-id="{{ $banner->id }}" 
                 data-title="{{ $banner->title }}" 
+                data-name="{{ $banner->name }}"
                 data-description="{{ $banner->description }}" 
                 data-image="{{ $banner->image }}" 
                 data-bs-toggle="modal" 
@@ -96,6 +101,10 @@ Home-Banner Details
                       <label for="title" class="mb-2">Banner Title</label>
                       <input type="text" class="form-control" id="bannerTitle" name="title" required>
                   </div>
+                  <div class="form-group">
+                    <label for="title" class="mb-2">Banner name</label>
+                    <input type="text" class="form-control" id="bannername" name="name" required>
+                </div>
                   <div class="form-group mt-3">
                       <label for="description" class="mb-2">Banner Description</label>
                       <textarea class="form-control" id="bannerDescription" name="description" rows="3" required></textarea>
@@ -125,6 +134,7 @@ Home-Banner Details
               // Populate the modal fields with data
               document.getElementById('bannerId').value = id;
               document.getElementById('bannerTitle').value = title;
+              document.getElementById('bannername').value = name;
               document.getElementById('bannerDescription').value = description;
 
               // Optionally, you can show the current image if needed

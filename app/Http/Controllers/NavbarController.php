@@ -48,7 +48,8 @@ class NavbarController extends Controller
     {
         // Validate the request
         $validator = Validator::make($request->all(), [
-            'title' => 'sometimes|required|max:255',  // Use 'sometimes' to allow partial updates
+            'title' => 'sometimes|required|max:255',
+            'name' => 'sometimes|required|max:255',
             'description' => 'sometimes|required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif',
         ]);
@@ -66,6 +67,10 @@ class NavbarController extends Controller
                 // Update only fields that are provided
                 if ($request->has('title')) {
                     $banner->title = $request->title;
+                }
+
+                if ($request->has('name')) {
+                    $banner->name = $request->name;
                 }
     
                 if ($request->has('description')) {
@@ -99,6 +104,7 @@ class NavbarController extends Controller
     
             Banner_detail::create([
                 'title' => $request->title,
+                'name' => $request->name,
                 'description' => $request->description,
                 'image' => isset($imageName) ? $imageName : null, // Use null if image is not provided
             ]);

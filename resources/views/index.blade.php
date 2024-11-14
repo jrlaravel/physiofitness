@@ -57,6 +57,7 @@
       <div class="home-content text-start flex-col-32 padd-lg">
           <div class="home-content-desc flex-col-10">
               <div class="heading-3" id="title"><?php echo htmlspecialchars($data['title']); ?></div>
+              <div class="heading-3" id="title"><?php echo htmlspecialchars($data['title']); ?></div>
               <p class="desc-md fw-regular mt-4" id="description"><?php echo htmlspecialchars($data['description']); ?></p>
           </div>
           <a href="#contact" class="btn-rounded-filled fw-regular desc-md clr-blue" style="margin-top: -16px">Book Appointment</a>

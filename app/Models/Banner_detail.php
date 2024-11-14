@@ -13,6 +13,7 @@ class Banner_detail extends Model
 
     protected $fillable = [
         'title',
+        'name',
         'description',
         'image',
     ];
