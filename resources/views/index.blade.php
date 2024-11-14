@@ -59,7 +59,7 @@
               <div class="heading-3" id="title"><?php echo htmlspecialchars($data['title']); ?></div>
               <p class="desc-md fw-regular mt-4" id="description"><?php echo htmlspecialchars($data['description']); ?></p>
           </div>
-          <a href="#contact" class="btn-rounded-filled fw-regular desc-md clr-blue">Book Appointment</a>
+          <a href="#contact" class="btn-rounded-filled fw-regular desc-md clr-blue" style="margin-top: -16px">Book Appointment</a>
       </div>
   </section>
   
@@ -481,7 +481,7 @@
               <div class="card-tips text-start" onclick="openModal('modal2<?php echo $item['id']; ?>')">
                   <div class="flex-col-32">
                       <div class="flex-col-10">
-                          <div class="desc-lg clr-white">Top 10 Exercise to</div>
+                          <div class="desc-rg clr-white">Top 10 Exercise to</div>
                           <div class="heading-5 clr-white"><?php echo htmlspecialchars($item['image_title']); ?></div>
                       </div>
                       <div class="desc-md clr-white">-By Dr. Urvashi Kaneriya</div>

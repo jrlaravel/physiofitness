@@ -131,11 +131,11 @@ body {
 }
 
 .heading-5 {
-    font-size: 28.4px;
+    font-size: 40px;
     /* font-size: 18px; */
     font-size: clamp(1.2813rem, 1.1233rem + 0.5267vw, 1.775rem);
     font-weight: 600;
-    line-height: 52px;
+    line-height: 32px;
     font-family: heading;
 }
 
@@ -277,7 +277,7 @@ body {
 .flex-col-32 {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 26px;
     align-items: flex-start;
 }
 
@@ -1072,13 +1072,12 @@ a {
     padding: 200px 134px;
 }
 .tips-item{
-    background-image: url('/assets/images/tips-bg.png');
     justify-content: flex-end !important;
     background-position: center;
     background-size: contain;
     min-height: 400px;
     background-repeat: no-repeat;
-    max-width: 500px;
+    max-width: 672px;
     width: 100%;
     border-radius: 12px;
     text-transform: capitalize;
