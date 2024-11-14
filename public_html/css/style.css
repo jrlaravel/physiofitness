@@ -112,12 +112,11 @@ body {
 }
 
 .heading-3 {
-    font-size: 64px !important;
+    /* font-size: 50.5px; */
     /* font-size: 36px; */
     font-size: clamp(2.25rem, 1.96rem + 0.9667vw, 3.1563rem);
     font-weight: 600;
-    line-height: 60px;
-    gap: 32px !important;
+    line-height: 52px;
     font-family: heading;
 }
 
@@ -455,7 +454,14 @@ a {
     padding-bottom: 100px !important;
 }
 
+/* Remove underline for all .heading-3 */
 .home-content .heading-3::after {
+    content: '';
+    display: none;
+}
+
+/* Add underline only for the specific element with the additional class or ID */
+.home-content .heading-underline::after {
     content: '';
     height: 10px;
     max-width: 600px;
