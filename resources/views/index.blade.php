@@ -890,10 +890,11 @@ const observer = new IntersectionObserver(entries => {
 observer.observe(document.getElementById('counter-section'));
 
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const video = document.getElementById('zumbaVideo');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-  
+document.addEventListener('DOMContentLoaded', function () {
+  const video = document.getElementById('videoPlay'); // Corrected ID
+  const playPauseBtn = document.getElementById('playPauseBtn');
+
+  if (video && playPauseBtn) { // Ensure elements exist
     playPauseBtn.addEventListener('click', function () {
       if (video.paused) {
         video.play();
@@ -903,15 +904,19 @@ observer.observe(document.getElementById('counter-section'));
         playPauseBtn.innerHTML = `<img src="{{asset('assets/images/play.png')}}" alt="Play" class="play-icon">`; 
       }
     });
-  
+
     video.addEventListener('play', function () {
       playPauseBtn.style.opacity = '0';  
     });
-  
+
     video.addEventListener('pause', function () {
       playPauseBtn.style.opacity = '1';  
     });
-  });
+  } else {
+    console.error('Video or play/pause button element not found');
+  }
+});
+
 
   document.getElementById('appointmentForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
@@ -932,7 +937,7 @@ observer.observe(document.getElementById('counter-section'));
         const result = await response.json();
 
         if (response.ok) {
-            alert('Appointment created successfully!');
+            alert(response.message);
             this.reset(); // Clear form fields on success
         } else {
             alert('Failed to create appointment. ' + result.message);
