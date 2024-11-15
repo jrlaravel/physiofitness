@@ -75,7 +75,7 @@ class ApiController extends Controller
     
             // Attempt to send an email to the admin
             try {
-                Mail::to('nilay.chotaliya119538@marwadiuniversity.ac.in')->send(new AppointmentCreated($appointment));
+                Mail::to('jrlaravel.digieagleinc@gmail.com')->send(new AppointmentCreated($appointment));
     
                 // Return a success JSON response after the email is sent
                 return response()->json([
