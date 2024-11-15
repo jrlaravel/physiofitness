@@ -636,7 +636,7 @@
                 Fill out our contact form and schedule your appointment today.
             </div>
         </div>
-        <form id="appointmentForm">
+        <form id="appointmentForm" method="post">
             <div class="input-field">
                 <input type="text" name="name" placeholder="Full Name*" required>
             </div>
@@ -922,7 +922,7 @@ observer.observe(document.getElementById('counter-section'));
 
     try {
         const response = await fetch('https://physiofitnessrajkot.com/api/store-appointment', {
-            method: 'POST',
+            method: 'post',
             headers: {
                 'Content-Type': 'application/json',
             },
