@@ -21,7 +21,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background-color: #007BFF;
+            background-color: #008A96;
             color: #fff;
             text-align: center;
             padding: 20px;
@@ -34,7 +34,7 @@
             padding: 20px;
         }
         .content p {
-            margin: 8px 0;
+            margin: 5px 0;
         }
         .content strong {
             color: #007BFF;
@@ -47,7 +47,7 @@
             border-top: 1px solid #ddd;
         }
         .footer a {
-            color: #007BFF;
+            color: #008A96;
             text-decoration: none;
         }
         .footer a:hover {

@@ -52,13 +52,14 @@ class ApiController extends Controller
     
     public function store(Request $request)
     {
-        // Validate incoming request data
+        // Validate request data
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'phone' => 'required|string|max:15',
             'age' => 'required|integer|min:0',
             'message' => 'nullable|string|max:1000',
+            'g-recaptcha-response' => 'required|string', // reCAPTCHA token
         ]);
     
         if ($validator->fails()) {
@@ -69,15 +70,35 @@ class ApiController extends Controller
             ], 422);
         }
     
+        // Verify reCAPTCHA
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+        $secretKey = env('RECAPTCHA_SECRET_KEY');
+        $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+    
+        $client = new \GuzzleHttp\Client();
+        $response = $client->post($verifyUrl, [
+            'form_params' => [
+                'secret' => $secretKey,
+                'response' => $recaptchaResponse,
+            ],
+        ]);
+    
+        $verification = json_decode((string) $response->getBody(), true);
+    
+        if (!$verification['success'] || $verification['score'] < 0.5) {
+            return response()->json([
+                'success' => false,
+                'message' => 'reCAPTCHA verification failed'
+            ], 400);
+        }
+    
+        // Proceed to create the appointment
         try {
-            // Create the appointment record
             $appointment = Appointment::create($request->only(['name', 'email', 'phone', 'age', 'message']));
     
-            // Attempt to send an email to the admin
             try {
-                Mail::to('nilay.chotaliya119538@marwadiuniversity.ac.in')->send(new AppointmentCreated($appointment));
+                Mail::to('jrlaravel.digieagleinc@gmail.com')->send(new AppointmentCreated($appointment));
     
-                // Return a success JSON response after the email is sent
                 return response()->json([
                     'success' => true,
                     'message' => 'Appointment created and email sent successfully!',
@@ -85,12 +106,11 @@ class ApiController extends Controller
                 ], 201);
     
             } catch (\Exception $mailException) {
-                // Delete the appointment if the email fails to send
-                $appointment->delete();
+                $appointment->delete(); // Clean up if email fails
     
                 return response()->json([
                     'success' => false,
-                    'message' => 'Failed to send email to admin',
+                    'message' => 'Failed to send email',
                     'error' => $mailException->getMessage()
                 ], 500);
             }
