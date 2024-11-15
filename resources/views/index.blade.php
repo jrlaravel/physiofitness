@@ -637,30 +637,23 @@
             </div>
         </div>
         <form id="appointmentForm">
-          <div class="input-field">
-              <input type="text" name="name" placeholder="Full Name*" required>
-          </div>
-          <div class="input-field">
-              <input type="text" name="phone" placeholder="Phone Number*" required>
-          </div>
-          <div class="input-field">
-              <input type="email" name="email" placeholder="Email Address*" required>
-          </div>
-          <div class="input-field">
-              <input type="number" name="age" placeholder="Age" required>
-          </div>
-          <div class="input-field full-width">
-              <textarea name="message" placeholder="What you want to know?*" required></textarea>
-          </div>
-          <button type="submit" class="btn-rounded-filled form-btn fw-bold desc-md clr-blue w-full">
-              Book Your Appointment
-          </button>
-          <!-- Invisible reCAPTCHA -->
-          <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-      </form>
-    
-      
-      
+            <div class="input-field">
+                <input type="text" name="name" placeholder="Full Name*" required>
+            </div>
+            <div class="input-field">
+                <input type="text" name="phone" placeholder="Phone Number*" required>
+            </div>
+            <div class="input-field">
+                <input type="email" name="email" placeholder="Email Address*" required>
+            </div>
+            <div class="input-field">
+                <input type="number" name="age" placeholder="Age" required>
+            </div>
+            <div class="input-field full-width">
+                <textarea name="message" placeholder="What you want to know?*" required></textarea>
+            </div>
+            <button type="submit" class="btn-rounded-filled form-btn fw-bold desc-md clr-blue w-full">Book Your Appointment</button>
+        </form>
     </div>
 </section>
 
@@ -731,20 +724,20 @@
 
   <!-- Owl Carousel JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  
+
   <!-- Bootstrap CDN -->
   <!-- <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
 
     
   <!-- Custom Script -->
   <script>
+
 function openModal(modalId) {
     var modal = new bootstrap.Modal(document.getElementById(modalId), {
       keyboard: false // Disable closing with Escape key
@@ -920,43 +913,36 @@ observer.observe(document.getElementById('counter-section'));
     });
   });
 
-  
-          // Execute reCAPTCHA on form submission
-          document.getElementById('appointmentForm').addEventListener('submit', async function (event) {
-              event.preventDefault(); // Prevent default form submission
-      
-              // Execute reCAPTCHA
-              grecaptcha.ready(async function () {
-                  const token = await grecaptcha.execute('your-site-key', { action: 'submit' });
-                  document.getElementById('g-recaptcha-response').value = token;
-      
-                  // Collect form data
-                  const formData = new FormData(document.getElementById('appointmentForm'));
-                  const formObject = Object.fromEntries(formData);
-      
-                  try {
-                      const response = await fetch('https://physiofitnessrajkot.com/api/store-appointment', {
-                          method: 'POST',
-                          headers: {
-                              'Content-Type': 'application/json',
-                          },
-                          body: JSON.stringify(formObject)
-                      });
-      
-                      const result = await response.json();
-      
-                      if (response.ok) {
-                          alert('Appointment created successfully!');
-                          document.getElementById('appointmentForm').reset(); // Clear form fields on success
-                      } else {
-                          alert('Failed to create appointment: ' + result.message);
-                      }
-                  } catch (error) {
-                      console.error('Error:', error);
-                      alert('An error occurred. Please try again later.');
-                  }
-              });
-          });
+  document.getElementById('appointmentForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Collect form data
+    const formData = new FormData(this);
+    const formObject = Object.fromEntries(formData);
+
+    try {
+        const response = await fetch('https://physiofitnessrajkot.com/api/store-appointment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formObject)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Appointment created successfully!');
+            this.reset(); // Clear form fields on success
+        } else {
+            alert('Failed to create appointment. ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    }
+});
+
 
   </script>
 </body>

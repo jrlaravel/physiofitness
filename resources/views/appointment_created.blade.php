@@ -37,7 +37,7 @@
             margin: 5px 0;
         }
         .content strong {
-            color: #007BFF;
+            color: #008A96;
         }
         .footer {
             text-align: center;
@@ -65,7 +65,7 @@
             <h2>New Appointment Created</h2>
             <p><strong>Name:</strong> {{ $appointment->name }}</p>
             <p><strong>Email:</strong> {{ $appointment->email }}</p>
-            <p><strong>Phone:</strong> {{ $appointment->phone }}</p>
+            <p><strong>Phone:</strong> <a href="tel:{{ $appointment->phone }}">{{ $appointment->phone }}</a></p>
             <p><strong>Age:</strong> {{ $appointment->age }}</p>
             <p><strong>Message:</strong> {{ $appointment->message ?? 'No message provided' }}</p>
             <p>Thank you for choosing <strong>PhysioFitness</strong> for your therapy needs. We look forward to providing excellent care.</p>
