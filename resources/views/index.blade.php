@@ -408,9 +408,19 @@
                     <div class="card-testomonial">
                         <!-- Video Section -->
                         <div class="video-container">
-                            <video src="<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/testimonial/' . $item['video']); ?>" class="video-testi video" controls></video>
-                        </div>
-
+                          <!-- Video Element -->
+                          <video class="video-testi video" id="videoPlay-<?php echo htmlspecialchars($item['id']); ?>" 
+                              src="<?php echo htmlspecialchars('https://physiofitnessrajkot.com/storage/testimonial/' . $item['video']); ?>" muted>
+                          </video>
+                      
+                          <!-- Custom Video Controls -->
+                          <div class="video-controls">
+                              <button id="playPauseBtn-<?php echo htmlspecialchars($item['id']); ?>" class="playPauseBtn">
+                                  <img id="playPauseImg-<?php echo htmlspecialchars($item['id']); ?>" 
+                                       src="{{asset('assets/images/play.png')}}" alt="">
+                              </button>
+                          </div>
+                      </div>
                         <!-- Testimonial Description -->
                         <div class="testi-des">
                             <img src="{{asset('assets/images/quote.png')}}" class="quote-img" alt="Quote Icon">
@@ -441,10 +451,11 @@
         <div class="video-container">
           <video class="video-zumba video" id="videoPlay" src="{{asset('assets/videos/zumba.mp4')}}"></video>
           <div class="video-controls">
-            <button id="playPauseBtn" class="playPauseBtn"><img id="playPauseImg" src="{{asset('assets/images/play.png')}}"
-                alt=""></button>
+              <button id="playPauseBtn" class="playPauseBtn">
+                  <img id="playPauseImg" src="{{asset('assets/images/play.png')}}" alt="">
+              </button>
           </div>
-        </div>
+      </div>
         <a href="#contact" class="btn-rounded-fill-pri">Book Your Zumba Slot</a>
       </div>
     </div>
@@ -891,30 +902,45 @@ observer.observe(document.getElementById('counter-section'));
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  const video = document.getElementById('videoPlay'); // Corrected ID
-  const playPauseBtn = document.getElementById('playPauseBtn');
+  const videos = document.querySelectorAll('.video'); // Select all video elements
+  const playPauseBtns = document.querySelectorAll('.playPauseBtn'); // Select all play/pause buttons
 
-  if (video && playPauseBtn) { // Ensure elements exist
-    playPauseBtn.addEventListener('click', function () {
-      if (video.paused) {
-        video.play();
-        playPauseBtn.innerHTML = `<img src="{{asset('assets/images/pause.png')}}" alt="Pause" class="play-icon">`; 
-      } else {
-        video.pause();
-        playPauseBtn.innerHTML = `<img src="{{asset('assets/images/play.png')}}" alt="Play" class="play-icon">`; 
-      }
-    });
+  // Loop through all video elements and bind events
+  videos.forEach((video, index) => {
+    const playPauseBtn = playPauseBtns[index];
+    const playPauseImg = playPauseBtn.querySelector('img');
 
-    video.addEventListener('play', function () {
-      playPauseBtn.style.opacity = '0';  
-    });
+    if (video && playPauseBtn) {
+      // Click event for play/pause button
+      playPauseBtn.addEventListener('click', function () {
+        if (video.paused) {
+          video.play();
+          playPauseImg.src = "{{asset('assets/images/pause.png')}}"; // Change to pause icon
+        } else {
+          video.pause();
+          playPauseImg.src = "{{asset('assets/images/play.png')}}"; // Change to play icon
+        }
+      });
 
-    video.addEventListener('pause', function () {
-      playPauseBtn.style.opacity = '1';  
-    });
-  } else {
-    console.error('Video or play/pause button element not found');
-  }
+      // Handle play event: hide play/pause button
+      video.addEventListener('play', function () {
+        playPauseBtn.style.opacity = '0';
+      });
+
+      // Handle pause event: show play/pause button
+      video.addEventListener('pause', function () {
+        playPauseBtn.style.opacity = '1';
+      });
+
+      // Disable right-click to prevent video downloading
+      video.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        alert("Video downloading is disabled.");
+      });
+    } else {
+      console.error('Video or play/pause button element not found');
+    }
+  });
 });
 
 
@@ -937,7 +963,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const result = await response.json();
 
         if (response.ok) {
-            alert(response.message);
+            alert('Appointment created successfully');
             this.reset(); // Clear form fields on success
         } else {
             alert('Failed to create appointment. ' + result.message);
