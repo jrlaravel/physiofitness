@@ -266,3 +266,17 @@ document.addEventListener('DOMContentLoaded', function () {
   //     playPauseBtn.style.opacity = '1';  
   //   });
   // });
+
+  function closeModalAndScroll() {
+    // Close the modal
+    const modal = document.querySelector('.modal.show');
+    if (modal) {
+      const modalInstance = bootstrap.Modal.getInstance(modal); // For Bootstrap 5
+      modalInstance.hide();
+    }
+
+    // Scroll to the #contact section
+    document.querySelector('#contact').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }

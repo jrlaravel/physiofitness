@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physio - Fitness</title>
+  <title>Physio Fitness - Leading Physiotherapy Clinic In Rajkot</title>
   <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
   <!-- Bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -219,7 +219,7 @@ $data = json_decode($response, true); // Decode the JSON into an associative arr
           <div class="heading-4 clr-white"><?php echo htmlspecialchars($item['image_title']); ?></div>
           <hr class="clr-white">
           <div class="desc-lg fw-regular clr-gray"><?php echo htmlspecialchars($item['description']); ?></div>
-          <a href="#contact" class="btn-rounded-filled btn-btn">Inquire Now</a>
+          <a href="javascript:void(0);" class="btn-rounded-filled btn-btn" onclick="closeModalAndScroll()">Inquire Now</a>
         </div>
       </div>
     </div>
