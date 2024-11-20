@@ -7,7 +7,7 @@ use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\BlogController;
 
 Route::get('' , function(){
-    return view('index');
+    return view('index-new');
 });
 Route::get('/pf-admin', [LoginController::class, 'index'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
