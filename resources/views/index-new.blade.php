@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +17,15 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{asset('css/style-new.css')}}">
   <link rel="stylesheet" href="{{asset('css/responsive-new.css')}}">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16564747509">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-16564747509');
+  </script>
 </head>
 
 <body>
@@ -29,7 +37,7 @@
         <a class="navbar-brand" href="#"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <img src="assets/images/menu.png" alt="">
+          <img src="{{asset('assets/images/menu.png')}}" alt="">
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
           <ul class="navbar-nav">
@@ -718,25 +726,25 @@ $data = json_decode($response, true); // Decode the JSON into an associative arr
       <div class="footer-links">
         <div class="heading-6 fw-regular">Links</div>
         <div class="links">
-          <a href="#" class="desc-rg fw-semibold">Who We Are</a>
-          <a href="#" class="desc-rg fw-semibold">Our Services</a>
-          <a href="#" class="desc-rg fw-semibold">Testimonials</a>
-          <a href="#" class="desc-rg fw-semibold">Expert Tips</a>
-          <a href="#" class="desc-rg fw-semibold">Contact Us</a>
+          <a href="#" class="desc-rg fw-medium">Who We Are</a>
+          <a href="#" class="desc-rg fw-medium">Our Services</a>
+          <a href="#" class="desc-rg fw-medium">Testimonials</a>
+          <a href="#" class="desc-rg fw-medium">Expert Tips</a>
+          <a href="#" class="desc-rg fw-medium">Contact Us</a>
         </div>
       </div>
       <div class="footer-contact flex-col-24 justify-content-start">
         <div class="flex-18">
           <img src="{{asset('assets/images/pin.png')}}" alt="">
-          <a href="https://maps.app.goo.gl/GsCdEdBafiNYbiYY6" target="_blank" class="fw-semibold clr-white"><?php echo htmlspecialchars($data['address']); ?></a>
+          <a href="https://maps.app.goo.gl/GsCdEdBafiNYbiYY6" target="_blank" class="fw-medium clr-white"><?php echo htmlspecialchars($data['address']); ?></a>
         </div>
         <div class="flex-18">
           <img src="{{asset('assets/images/phone.png')}}" alt="">
-          <a href="tel:+91 <?php echo htmlspecialchars($data['phone']); ?>" class="fw-semibold clr-white">+91 <?php echo htmlspecialchars($data['phone']); ?></a>
+          <a href="tel:+91 <?php echo htmlspecialchars($data['phone']); ?>" class="fw-medium clr-white">+91 <?php echo htmlspecialchars($data['phone']); ?></a>
         </div>
         <div class="flex-18">
           <img src="{{asset('assets/images/mail.png')}}" alt="">
-          <a href="mailto:<?php echo htmlspecialchars($data['email']); ?>" class="fw-semibold clr-white"><?php echo htmlspecialchars($data['email']); ?></a>
+          <a href="mailto:<?php echo htmlspecialchars($data['email']); ?>" class="fw-medium clr-white"><?php echo htmlspecialchars($data['email']); ?></a>
         </div>
       </div>
       <div class="footer-map">
@@ -807,5 +815,4 @@ $data = json_decode($response, true); // Decode the JSON into an associative arr
   });
 </script>
 </body>
-
 </html>
